@@ -1,18 +1,121 @@
-# React + Vite
+🎭 Interactive Hover Reveal – React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An experimental React + Vite project that creates an immersive visual experience where background images dynamically reveal based on cursor movement.
+The page reacts to the user’s presence — as the cursor moves, hidden layers emerge, creating a cinematic, psychological, and modern portfolio-style effect.
 
-Currently, two official plugins are available:
+🚀 Live Concept
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+“The UI does not wait for the user — it responds to them.”
 
-## React Compiler
+The background image is not static
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+Visibility changes based on cursor hover position
 
-Note: This will impact Vite dev & build performances.
+Designed to feel alive, reactive, and immersive
 
-## Expanding the ESLint configuration
+Ideal for portfolio landing pages, creative profiles, or experimental UI concepts
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+✨ Key Features
+
+🎯 Cursor-based hover detection
+
+🖼️ Dynamic background image reveal
+
+⚡ Ultra-fast rendering with Vite
+
+🧠 Minimal UI, maximum visual impact
+
+🎨 Designed for dark, cinematic aesthetics
+
+🧩 Clean React component structure
+
+🛠 Tech Stack
+
+React
+
+Vite
+
+JavaScript (ES6+)
+
+CSS (custom effects & layering)
+
+HTML5
+
+📂 Project Structure
+About-Page/
+├── public/
+│   └── assets / static files
+│
+├── src/
+│   ├── components/
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+│
+├── index.html
+├── vite.config.js
+├── package.json
+└── README.md
+
+🖱️ How It Works (Concept)
+
+The cursor position is tracked using mouse events
+
+Based on hover coordinates:
+
+Background layers are revealed or masked
+
+Visual focus shifts dynamically
+
+The effect creates a parallax-like reveal without heavy libraries
+
+This approach keeps performance high while delivering a next-gen interaction feel.
+
+🧪 Installation & Run Locally
+# Clone the repository
+git clone https://github.com/NikDev345/About-Page.git
+
+# Enter the project folder
+cd About-Page
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+
+Open in browser:
+
+http://localhost:5173
+
+🎯 Use Cases
+
+Personal portfolio landing page
+
+Experimental UI/UX showcase
+
+Creative developer profile
+
+Interactive “About Me” page
+
+Digital art + code fusion projects
+
+🔮 Future Enhancements (Planned)
+
+Smooth cursor interpolation (GSAP / requestAnimationFrame)
+
+Multiple background layers
+
+Mobile touch support
+
+Theme toggle (dark / darker)
+
+Sound-reactive hover effects
+
+WebGL / Canvas version
+
+🧠 Author
+
+Nagraj Rangarej
+AI & Data Science | System Builder | Creative Technologist
