@@ -1,0 +1,212 @@
+/* =========================
+   RESET
+========================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* =========================
+   APP LAYOUT & VARIABLES
+========================= */
+.app {
+  --clock-size: 3vw;
+  --gap: calc(var(--clock-size) * 0.05);
+  --clock-segment-w: calc(var(--clock-size) * 4 + var(--gap) * 5);
+  --clock-segment-h: calc(var(--clock-size) * 6 + var(--gap) * 5);
+
+  /* Light theme defaults */
+  --bg: #f5f5f5;
+  --hand: #000;
+  --clock-border: #ffffff;
+  --glow: none;
+  --pulse: 1;
+
+  display: flex;
+  gap: var(--gap);
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding-left: calc(var(--clock-size) + var(--gap) * 2);
+
+  background: var(--bg);
+  transition: background 0.6s ease;
+}
+
+/* =========================
+   DIGIT CONTAINER
+========================= */
+.app > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+  width: var(--clock-segment-w);
+  height: var(--clock-segment-h);
+}
+
+.app > div:nth-of-type(even) {
+  margin-right: var(--clock-size);
+}
+
+/* =========================
+   CLOCK BODY (BASE)
+========================= */
+.clock {
+  --w: 47%;
+  --h: 3px;
+
+  position: relative;
+  width: var(--clock-size);
+  height: var(--clock-size);
+  border-radius: 50%;
+  flex-shrink: 0;
+
+  border: 2px solid var(--clock-border);
+
+  /* Light mode surface */
+  background: linear-gradient(225deg, #eaeaea 10%, #ffffff);
+
+  box-shadow:
+    -2px 2px 6px rgba(0, 0, 0, 0.25),
+     2px -2px 6px rgba(255, 255, 255, 0.6),
+     var(--glow);
+
+  transition:
+    background 0.6s ease,
+    box-shadow 0.6s ease,
+    border 0.6s ease;
+}
+
+/* =========================
+   CLOCK HANDS
+========================= */
+.clock::before,
+.clock::after {
+  content: "";
+  position: absolute;
+  top: calc(50% - var(--h) / 2);
+  left: 50%;
+  transform-origin: 0% 50%;
+
+  width: var(--w);
+  height: var(--h);
+
+  background: var(--hand);
+  border-radius: 999px;
+
+  box-shadow: var(--glow);
+
+  transition: calc(var(--dur) * 1s) ease-in-out;
+  transform: rotate(calc(var(--angle) * 1deg));
+}
+
+.clock::before { --angle: var(--hour-angle); }
+.clock::after  { --angle: var(--minute-angle); }
+
+/* =========================
+   LIGHT THEME
+========================= */
+.app.light {
+  --bg: #f5f5f5;
+  --hand: #000000;
+  --clock-border: #ffffff;
+  --glow: none;
+}
+
+/* =========================
+   DARK THEME (CONTROLLED NEON)
+========================= */
+.app.dark {
+  --bg: #050505;
+  --hand: #00e5e5; /* softer cyan */
+  --clock-border: rgba(0, 229, 229, 0.45);
+
+  /* 👇 toned-down, eye-safe neon glow */
+  --glow:
+    0 0 calc(3px * var(--pulse)) rgba(0, 229, 229, 0.6),
+    0 0 calc(7px * var(--pulse)) rgba(0, 229, 229, 0.35);
+}
+
+/* Dark mode clock face */
+.app.dark .clock {
+  background: radial-gradient(
+    circle at top left,
+    #0b0b0b,
+    #000000
+  );
+
+  box-shadow:
+    inset 0 0 6px rgba(0, 0, 0, 0.8),
+    var(--glow);
+}
+
+/* =========================
+   THEME TOGGLE BUTTON
+========================= */
+.theme-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 20;
+
+  padding: 10px 14px;
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.08);
+  color: inherit;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+
+  cursor: pointer;
+  font-size: 14px;
+
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.theme-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+}
+
+/* =========================
+   FULLSCREEN THEME WIPE
+========================= */
+.theme-overlay {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 10;
+
+  clip-path: inset(100% 0 0 0);
+  animation: wipe 0.6s ease forwards;
+}
+
+@keyframes wipe {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* =========================
+   RESPONSIVE TWEAKS
+========================= */
+@media (max-width: 700px) {
+  .clock {
+    --h: 2px;
+    border-width: 1px;
+  }
+}
+
+@media (max-width: 500px) {
+  .clock {
+    --h: 1px;
+    --w: 50%;
+  }
+}

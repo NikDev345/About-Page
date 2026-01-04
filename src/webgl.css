@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+  background: #000;
+  overflow: hidden;
+}
+
+.webgl-app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 10px;
+}
+
+.digit {
+  display: grid;
+  grid-template-columns: repeat(4, 80px);
+  grid-template-rows: repeat(6, 80px);
+  gap: 6px;
+}
