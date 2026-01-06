@@ -1,0 +1,153 @@
+.hero {
+  height: 100vh;
+  background-image: url('/images/will1.png');
+  background-size: cover;
+  background-position: 60% 30%; /* 👈 shifts image to reveal face */
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ================= FIRE REVEAL ================= */
+
+.fire-reveal {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+
+  background-image: url('/images/v1.webp');
+  background-size: cover;
+  background-position: center;
+
+  --x: 50%;
+  --y: 50%;
+  --tx: calc(var(--x) - 20px);
+  --ty: calc(var(--y) - 20px);
+
+  transition: opacity 0.5s ease;
+  will-change: mask-image, -webkit-mask-image, opacity;
+
+  -webkit-mask-image:
+    radial-gradient(circle 320px at var(--x) var(--y),
+      rgba(255,255,255,1) 0%,
+      rgba(255,255,255,0.6) 40%,
+      transparent 70%),
+    radial-gradient(circle 360px at var(--tx) var(--ty),
+      rgba(255,255,255,0.5) 0%,
+      transparent 70%);
+
+  mask-image:
+    radial-gradient(circle 320px at var(--x) var(--y),
+      rgba(255,255,255,1) 0%,
+      rgba(255,255,255,0.6) 40%,
+      transparent 70%),
+    radial-gradient(circle 360px at var(--tx) var(--ty),
+      rgba(255,255,255,0.5) 0%,
+      transparent 70%);
+
+  animation:
+    pulseBlob 3s ease-in-out infinite,
+    fireDrift 6s ease-in-out infinite;
+}
+
+.fire-reveal.active {
+  opacity: 1;
+}
+
+@keyframes pulseBlob {
+  0%, 100% { filter: blur(0px); }
+  50% { filter: blur(1px); }
+}
+
+@keyframes fireDrift {
+  0% { background-position: 50% 50%; }
+  50% { background-position: 52% 48%; }
+  100% { background-position: 50% 50%; }
+}
+
+/* ================= CONTENT ================= */
+
+.hero-content {
+  position: relative;
+  height: 100%;
+  z-index: 2;
+}
+
+.left {
+  position: absolute;
+  bottom: 60px;
+  left: 50px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.left h1 {
+  font-size: 64px;
+  color: #120303;
+  line-height: 1;
+  text-shadow:
+    0 0 8px rgba(179, 0, 0, 0.6),
+    0 0 18px rgba(179, 0, 0, 0.4);
+}
+
+.left p {
+  font-size: 18px;
+  color: #eee;
+}
+
+.left button {
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  background: black;
+  color: white;
+  cursor: pointer;
+}
+
+/* ================= RIGHT ================= */
+
+.right {
+  position: absolute;
+  bottom: 100px;
+  right: 40px;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.right h1 {
+  font-size: 56px;
+  color: white;
+  text-shadow:
+    0 0 8px rgba(179, 0, 0, 0.6),
+    0 0 18px rgba(179, 0, 0, 0.4);
+}
+
+.right p {
+  font-size: 20px;
+  color: #ddd;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+  .left,
+  .right {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  .left h1,
+  .right h1 {
+    font-size: 36px;
+  }
+}
