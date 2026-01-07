@@ -3,6 +3,8 @@
 An experimental React + Vite project that creates an immersive visual experience where background images dynamically reveal based on cursor movement.
 The page reacts to the user’s presence — as the cursor moves, hidden layers emerge, creating a cinematic, psychological, and modern portfolio-style effect.
 
+" i will surely look it up forward as i want to add many projects of mine in future 
+soo stay tuned with me !!!!!"
 🚀 Live Concept
 
 “The UI does not wait for the user — it responds to them.”
