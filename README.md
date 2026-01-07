@@ -15,6 +15,9 @@ Designed to feel alive, reactive, and immersive
 
 Ideal for portfolio landing pages, creative profiles, or experimental UI concepts
 
+this is the best i can do for now 
+as i dont have more time to execute the full program
+
 ✨ Key Features
 
 🎯 Cursor-based hover detection
